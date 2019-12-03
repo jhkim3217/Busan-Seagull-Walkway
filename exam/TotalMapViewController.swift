@@ -12,7 +12,6 @@ import CoreLocation
 
 class TotalMapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
-    
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
     var dContents: NSArray?
@@ -29,38 +28,28 @@ class TotalMapViewController: UIViewController, CLLocationManagerDelegate, MKMap
         
         if let myItems = dContents {
             for item in myItems {
-                let address = (item as AnyObject).value(forKey: "address")
-                let title = (item as AnyObject).value(forKey: "title")
-                let geoCoder = CLGeocoder()
+                let _title = (item as AnyObject).value(forKey: "title")
+                let _subtitle = (item as AnyObject).value(forKey: "subtitle")
+                let _lat = (item as AnyObject).value(forKey: "lat") as! String
+                let _lon = (item as AnyObject).value(forKey: "lon") as! String
                 
-                geoCoder.geocodeAddressString(address as! String, completionHandler: { placemarks, error in
-                    if error != nil {
-                        print(error!)
-                        return
-                    }
-                    
-                    if let myPlacemarks = placemarks {
-                        let myPlacemark = myPlacemarks[0]
-                        
-                        let anno = MKPointAnnotation()
-                        anno.title = title as? String
-                        anno.subtitle = address as? String
-                        
-                        if let myLocation = myPlacemark.location {
-                            anno.coordinate = myLocation.coordinate
-                            annos.append(anno)
-                        }
-                        
-                    }
-                    
-                    //self.mapView.showAnnotations(annos, animated: true)
-                    self.mapView.addAnnotations(annos)
-                } )
+                let anno = MKPointAnnotation()
+                anno.title = _title as! String
+                anno.subtitle = _subtitle as! String
+                anno.coordinate.latitude = Double(_lat)!
+                anno.coordinate.longitude = Double(_lon)!
+                self.mapView.addAnnotation(anno)
+
+
             }
             
         } else {
             print("dContents의 값은 nil")
         }
+        
+        
+        
+        
         
         // 나의 위치 트래킹
         locationManager.startUpdatingLocation()

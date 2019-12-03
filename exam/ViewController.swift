@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -18,13 +19,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // 테이블 뷰 셋팅
         mTableView.delegate = self
         mTableView.dataSource = self
         
         self.title = "Busan Map Tour"
         
         // 데이터 로드
-        let path = Bundle.main.path(forResource: "data", ofType: "plist")
+//        let path = Bundle.main.path(forResource: "data", ofType: "plist")
+        let path = Bundle.main.path(forResource: "gil", ofType: "plist")
+
         contents = NSArray(contentsOfFile: path!)!
     }
     
@@ -33,10 +37,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 셀 설정
         let myCell = mTableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
         
         let myTitle = (contents[indexPath.row] as AnyObject).value(forKey: "title")
-        let myAddress = (contents[indexPath.row] as AnyObject).value(forKey: "address")
+//        let myAddress = (contents[indexPath.row] as AnyObject).value(forKey: "address")
+        let myAddress = (contents[indexPath.row] as AnyObject).value(forKey: "subtitle")
+
         
         print(myAddress!)
         
@@ -54,16 +61,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             let selectedPath = mTableView.indexPathForSelectedRow
             
             let myIndexedTitle = (contents[(selectedPath?.row)!] as AnyObject).value(forKey: "title")
-            let myIndexedAddress = (contents[(selectedPath?.row)!] as AnyObject).value(forKey: "address")
-            
+//            let myIndexedAddress = (contents[(selectedPath?.row)!] as AnyObject).value(forKey: "address")
+            let myIndexedAddress = (contents[(selectedPath?.row)!] as AnyObject).value(forKey: "subtitle")
+            let myIndexLat = (contents[(selectedPath?.row)!] as AnyObject).value(forKey: "lat")
+            let myIndexLon = (contents[(selectedPath?.row)!] as AnyObject).value(forKey: "lon")
+
             print("myIndexedTitle = \(String(describing: myIndexedTitle))")
-            
+            print("my = \(myIndexLat)")
+            detailMVC.dLat = myIndexLat as? String
+            detailMVC.dLon = myIndexLon as? String
             detailMVC.dTitle = myIndexedTitle as? String
             detailMVC.dAddress = myIndexedAddress as? String
             
-        } else if segue.identifier == "goTotalMap" {
-            print("this is TotlMapViewController")
             
+        } else if segue.identifier == "goTotalMap" {
+           
             let totalMVC = segue.destination as! TotalMapViewController
             totalMVC.dContents = contents
             

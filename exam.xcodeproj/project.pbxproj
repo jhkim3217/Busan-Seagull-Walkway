@@ -17,6 +17,9 @@
 		74C82FB5237A69B7006F315A /* data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74C82FB4237A69B7006F315A /* data.plist */; };
 		74C82FB7237A6D9F006F315A /* DetailMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C82FB6237A6D9F006F315A /* DetailMapViewController.swift */; };
 		74C82FB9237A6DB1006F315A /* TotalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C82FB8237A6DB1006F315A /* TotalMapViewController.swift */; };
+		74D5F46A2383B456000D3562 /* navi.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D5F4692383B455000D3562 /* navi.png */; };
+		74D5F46C2383B50F000D3562 /* icons8-route-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D5F46B2383B50F000D3562 /* icons8-route-50.png */; };
+		74D5F46E2383BA05000D3562 /* gil.plist in Resources */ = {isa = PBXBuildFile; fileRef = 74D5F46D2383BA05000D3562 /* gil.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		74C82FB4237A69B7006F315A /* data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = data.plist; sourceTree = "<group>"; };
 		74C82FB6237A6D9F006F315A /* DetailMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMapViewController.swift; sourceTree = "<group>"; };
 		74C82FB8237A6DB1006F315A /* TotalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalMapViewController.swift; sourceTree = "<group>"; };
+		74D5F4692383B455000D3562 /* navi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navi.png; sourceTree = "<group>"; };
+		74D5F46B2383B50F000D3562 /* icons8-route-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-route-50.png"; sourceTree = "<group>"; };
+		74D5F46D2383BA05000D3562 /* gil.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = gil.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,10 +78,13 @@
 				74C82F9F237A6960006F315A /* ViewController.swift */,
 				74C82FB6237A6D9F006F315A /* DetailMapViewController.swift */,
 				74C82FB8237A6DB1006F315A /* TotalMapViewController.swift */,
+				74D5F4692383B455000D3562 /* navi.png */,
 				74C82FA1237A6960006F315A /* Main.storyboard */,
+				74D5F46B2383B50F000D3562 /* icons8-route-50.png */,
 				74C82FA4237A6968006F315A /* Assets.xcassets */,
 				74C82FA6237A6968006F315A /* LaunchScreen.storyboard */,
 				74C82FA9237A6968006F315A /* Info.plist */,
+				74D5F46D2383BA05000D3562 /* gil.plist */,
 			);
 			path = exam;
 			sourceTree = "<group>";
@@ -147,10 +156,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74D5F46C2383B50F000D3562 /* icons8-route-50.png in Resources */,
 				74C82FA8237A6968006F315A /* LaunchScreen.storyboard in Resources */,
 				74C82FA5237A6968006F315A /* Assets.xcassets in Resources */,
 				74C82FB5237A69B7006F315A /* data.plist in Resources */,
+				74D5F46E2383BA05000D3562 /* gil.plist in Resources */,
 				74C82FA3237A6960006F315A /* Main.storyboard in Resources */,
+				74D5F46A2383B456000D3562 /* navi.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

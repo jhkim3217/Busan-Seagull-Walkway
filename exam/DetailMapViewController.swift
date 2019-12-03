@@ -14,6 +14,10 @@ class DetailMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
 
     var dTitle: String?
     var dAddress: String?
+    var userLocation: CLLocation?
+    var dLat: String?
+    var dLon: String?
+    var dPoint: MKPointAnnotation?
 
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
@@ -23,50 +27,64 @@ class DetailMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         locationManager.delegate = self
         mapView.delegate = self
         
+        
         // Do any additional setup after loading the view.
         print("dTitle = \(String(describing: dTitle))")
         print("dAddress = \(String(describing: dAddress))")
+        print("dLat = \(String(describing: dLat))")
+        
         
         // navigation title 설정
         self.title = dTitle
         
         // geoCoding
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(dAddress!, completionHandler: { plackmarks, error in
-            
-            if error != nil {
-                print(error!)
-            }
-            
-            if plackmarks != nil {
-                let myPlacemark  = plackmarks?[0]
-                
-                if (myPlacemark?.location) != nil {
-                    
-                    //self.mapView.setRegion(region, animated: true)
-                    
-                    // Pin 꼽기, title, suttitle
-                    let anno = MKPointAnnotation()
-                    anno.title = self.dTitle
-                    anno.subtitle = self.dAddress
-                    anno.coordinate = (myPlacemark?.location?.coordinate)!
-                    self.mapView.addAnnotation(anno)
-                    //self.mapView.selectAnnotation(anno, animated: true)
-                }
-            }
-            
-        } )
+//        let geoCoder = CLGeocoder()
+//        geoCoder.geocodeAddressString(dAddress!, completionHandler: { plackmarks, error in
+//
+//            if error != nil {
+//                print(error!)
+//            }
+//
+//            if plackmarks != nil {
+//                let myPlacemark  = plackmarks?[0]
+//
+//                if (myPlacemark?.location) != nil {
+//
+//                    //self.mapView.setRegion(region, animated: true)
+//
+//                    // Pin 꼽기, title, suttitle
+//                    let anno = MKPointAnnotation()
+//                    anno.title = self.dTitle
+//                    anno.subtitle = self.dAddress
+//                    anno.coordinate = (myPlacemark?.location?.coordinate)!
+//                    self.dPoint = anno
+//                    self.mapView.addAnnotation(anno)
+//                    //self.mapView.selectAnnotation(anno, animated: true)
+//                }
+//            }
+//
+//        } )
+        
+        let anno = MKPointAnnotation()
+        anno.title = self.dTitle
+        anno.subtitle = self.dAddress
+        anno.coordinate.latitude = Double(dLat!)!
+        anno.coordinate.longitude = Double(dLon!)!
+        self.dPoint = anno
+        self.mapView.addAnnotation(anno)
+        
+        
+        let center = CLLocationCoordinate2D(latitude: (anno.coordinate.latitude), longitude: anno.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        mapView.setRegion(region, animated: true)
+        
         
         // 나의 위치 트래킹
         locationManager.startUpdatingLocation()
         
         locationManager.requestAlwaysAuthorization()
         
-        
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        
-        
-        
         
         mapView.showsUserLocation = true
 
@@ -87,7 +105,6 @@ class DetailMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
         else {
             annotationView?.annotation = annotation
         }
-        
         return annotationView
         
     }
@@ -95,14 +112,29 @@ class DetailMapViewController: UIViewController, CLLocationManagerDelegate, MKMa
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let userLocation: CLLocation = locations[0]
+        userLocation = locations[0]
         print(userLocation)
         
-        let center = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
+        let center = CLLocationCoordinate2D(latitude: (userLocation?.coordinate.latitude)!, longitude: userLocation!.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-        mapView.setRegion(region, animated: true)
+        //mapView.setRegion(region, animated: true)
         
     }
+    
+    @IBAction func navigate(_ sender: Any) {
+        let source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: (userLocation?.coordinate.latitude)!, longitude: (userLocation?.coordinate.longitude)!)))
+        source.name = "내 위치"
+        
+        let destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: (dPoint?.coordinate.latitude)!, longitude: (dPoint?.coordinate.longitude)!)))
+        destination.name = dTitle
+        
+        MKMapItem.openMaps(with: [source, destination], launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving])
+
+    }
+    
+    
+    
+    
 
 
 }

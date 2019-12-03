@@ -64,7 +64,7 @@
                     <navigationItem key="navigationItem" id="tLf-Kf-NyI">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="search" id="4df-FB-wBC">
                             <connections>
-                                <segue destination="AB0-9k-wxi" kind="show" identifier="goTotalMap" id="JPD-gz-oCo"/>
+                                <segue destination="AB0-9k-wxi" kind="show" identifier="goTotalMap" id="5si-nK-JJ2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -97,25 +97,34 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RyV-cf-kcq"/>
                     </view>
+                    <navigationItem key="navigationItem" id="RCN-AI-dfX"/>
                     <connections>
                         <outlet property="mapView" destination="ttI-WE-KwG" id="pL6-dl-io2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfL-te-pN2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2038" y="-190"/>
+            <point key="canvasLocation" x="2038" y="-180"/>
         </scene>
         <!--Detail Map View Controller-->
         <scene sceneID="1cq-vQ-4wi">
             <objects>
                 <viewController id="Y9u-61-Ro6" customClass="DetailMapViewController" customModule="exam" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="0jB-Zo-vPp">
+                    <view key="view" contentMode="topRight" id="0jB-Zo-vPp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3I1-ND-P0t">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfc-yU-N88">
+                                <rect key="frame" x="319" y="26" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="navigate:" destination="Y9u-61-Ro6" eventType="touchDown" id="ci7-O9-ekO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -126,6 +135,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MyN-k9-GFs"/>
                     </view>
+                    <navigationItem key="navigationItem" id="yZU-Ud-vHd">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="navigate" id="O2a-gC-4pU">
+                            <inset key="imageInsets" minX="-8" minY="1" maxX="-10" maxY="-5"/>
+                            <connections>
+                                <action selector="navigate:" destination="Y9u-61-Ro6" id="78R-L8-vDg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="3I1-ND-P0t" id="SWx-Lc-jzf"/>
                     </connections>
@@ -153,4 +170,7 @@
             <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="navigate" width="50" height="50"/>
+    </resources>
 </document>

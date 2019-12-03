@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>lat</key>
+		<string>35.133176</string>
+		<key>lon</key>
+		<string>129.120684</string>
+		<key>subtitle</key>
+		<string>광안리, 해운대 보기</string>
+		<key>title</key>
+		<string>동생말 전망대</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<string>35.127701</string>
+		<key>lon</key>
+		<string>129.1224</string>
+		<key>subtitle</key>
+		<string>바닷길 다리 건너기</string>
+		<key>title</key>
+		<string>구름다리</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<string>35.12384</string>
+		<key>lon</key>
+		<string>129.124117</string>
+		<key>subtitle</key>
+		<string>해산물로 소주한잔</string>
+		<key>title</key>
+		<string>해녀막사</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<string>35.123349</string>
+		<key>lon</key>
+		<string>129.123774</string>
+		<key>subtitle</key>
+		<string>광안대교가 멋진곳</string>
+		<key>title</key>
+		<string>어울마당</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<string>35.11696</string>
+		<key>lon</key>
+		<string>129.12755</string>
+		<key>subtitle</key>
+		<string>해안절경 바위</string>
+		<key>title</key>
+		<string>치마바위</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<string>35.109237</string>
+		<key>lon</key>
+		<string>129.12652</string>
+		<key>subtitle</key>
+		<string>해안절경 바위</string>
+		<key>title</key>
+		<string>농바위</string>
+	</dict>
+	<dict>
+		<key>lat</key>
+		<string>35.104532</string>
+		<key>lon</key>
+		<string>129.123774</string>
+		<key>subtitle</key>
+		<string>스카이워크 걷기</string>
+		<key>title</key>
+		<string>오륙도 해맞이공원</string>
+	</dict>
+</array>
+</plist>
